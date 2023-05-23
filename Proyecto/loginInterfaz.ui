@@ -54,7 +54,7 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -89,7 +89,7 @@ color: rgb(107, 105, 105);</string>
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -141,7 +141,7 @@ color: rgb(107, 105, 105);</string>
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -172,7 +172,7 @@ color: rgb(107, 105, 105);</string>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="usuario_log">
+       <widget class="QLineEdit" name="lineEdit_3">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
@@ -201,7 +201,7 @@ color: rgb(107, 105, 105);</string>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="contrasena_log">
+       <widget class="QLineEdit" name="lineEdit_4">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
@@ -211,7 +211,7 @@ border: 1px solid  rgb(143, 142, 142);</string>
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="layoutWidget">
+    <widget class="QWidget" name="">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -239,10 +239,7 @@ color: rgb(107, 105, 105);</string>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="entrar">
-        <property name="enabled">
-         <bool>true</bool>
-        </property>
+       <widget class="QPushButton" name="pushButton_2">
         <property name="font">
          <font>
           <family>Bahnschrift SemiLight</family>
@@ -265,25 +262,9 @@ background-color: rgb(187, 134, 252);</string>
         <property name="text">
          <string>Sing in</string>
         </property>
-        <property name="checkable">
-         <bool>false</bool>
-        </property>
        </widget>
       </item>
      </layout>
-    </widget>
-    <widget class="QLineEdit" name="lineEdit">
-     <property name="geometry">
-      <rect>
-       <x>200</x>
-       <y>180</y>
-       <width>113</width>
-       <height>20</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>hola</string>
-     </property>
     </widget>
    </widget>
    <widget class="QWidget" name="widget" native="true">
@@ -298,42 +279,6 @@ background-color: rgb(187, 134, 252);</string>
     <property name="styleSheet">
      <string notr="true">background-color: rgb(127, 57, 251);</string>
     </property>
-    <widget class="QFrame" name="frame_2">
-     <property name="geometry">
-      <rect>
-       <x>100</x>
-       <y>130</y>
-       <width>291</width>
-       <height>291</height>
-      </rect>
-     </property>
-     <property name="styleSheet">
-      <string notr="true">background-color: rgb(235, 198, 255);
-background-color: rgb(232, 229, 255);</string>
-     </property>
-     <property name="frameShape">
-      <enum>QFrame::StyledPanel</enum>
-     </property>
-     <property name="frameShadow">
-      <enum>QFrame::Raised</enum>
-     </property>
-     <widget class="QLabel" name="label_4">
-      <property name="geometry">
-       <rect>
-        <x>-90</x>
-        <y>50</y>
-        <width>401</width>
-        <height>211</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="pixmap">
-       <pixmap>../../../Downloads/IMG-20230523-WA0001-removebg-preview.png</pixmap>
-      </property>
-     </widget>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

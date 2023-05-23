@@ -152,19 +152,16 @@ color: rgb(107, 105, 105);</string>
        <item>
         <layout class="QHBoxLayout" name="horizontalLayout">
          <item>
-          <widget class="QRadioButton" name="women">
+          <widget class="QRadioButton" name="radioButton_2">
            <property name="text">
-            <string>Women</string>
+            <string>RadioButton</string>
            </property>
           </widget>
          </item>
          <item>
-          <widget class="QRadioButton" name="men">
+          <widget class="QRadioButton" name="radioButton">
            <property name="text">
-            <string>Men</string>
-           </property>
-           <property name="checked">
-            <bool>true</bool>
+            <string>RadioButton</string>
            </property>
           </widget>
          </item>

@@ -13,7 +13,7 @@ def registrar(nombre, fechana, genero, intereses, descripcion, profesion, areatr
 def crearusu(email, contrasena, numcel):
     db = sqlite3.connect("Bseusuarios.s3db")
     cursor = db.cursor()
-    consulta = "INSERT INTO Creacionusuario (email, contrasena, numcel) VALUES (?, ?, ?)"
+    consulta = "INSERT INTO Creacionusuario (email, contrasena, numcel) "
     cursor.execute(consulta, (email, contrasena, numcel))
     db.commit()
     cursor.close()
@@ -24,13 +24,15 @@ def validar(usuario):
     db = sqlite3.connect("Bseusuarios.s3db")
     db.row_factory = sqlite3.Row
     cursor = db.cursor()
-    consulta = "SELECT contrasena FROM Usuarios where usuario='"+ usuario +"'"
-    cursor.execute(consulta)
+    consulta = "SELECT contrasena FROM Usuarios WHERE usuario = ?"
+    cursor.execute(consulta, (usuario,))
     resultado = cursor.fetchone()
-    print(f"el resultado es:{list(resultado)}")
     cursor.close()
     db.close()
-    return resultado
+    if resultado:
+        return True, resultado["contrasena"]
+    else:
+        return False, None
 
 def main():
     Nombre = input('Ingrese su Nombre: ')
@@ -44,8 +46,6 @@ def main():
     x = input('\nIngrese su usuario: ')
     validar(x)
 
-def hola():
-    print("funcion")
 
 if __name__ == "__main__":
     main()
