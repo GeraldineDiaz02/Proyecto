@@ -15,7 +15,7 @@ class Logearse(PyQT.QMainWindow):
 
         self.entrar.clicked.connect(cb.validar)
 
-class Creperfil(PyQT.QMainWindow):
+class Creusuario(PyQT.QMainWindow):
     def __init__(self):
         super().__init__()
         self.initGui()
@@ -24,7 +24,7 @@ class Creperfil(PyQT.QMainWindow):
         uic.loadUi('createuser.ui', self)
         self.show()
 
-        self.registrar.clicked.connect(cb.registrar)
+        self.registrar.clicked.connect(self.registro)
 
     def registro(self):
         nombre = self.innombre.text()
@@ -40,17 +40,6 @@ class Creperfil(PyQT.QMainWindow):
         profesion = self.inprofesiones.text()
         inworkarea = self.indescripcion.text()
 
-class Creusuario(PyQT.QMainWindow):
-    def __init__(self):
-        super().__init__()
-        self.initGui()
-
-    def initGui(self):
-        uic.loadUi('singup.ui', self)
-        self.show()
-        
-        self.registrar.clicked.connect(cb.crearusu)
-
 def main():
     app = PyQT.QApplication([])
     window = Logearse()
@@ -58,4 +47,3 @@ def main():
 
 if __name__ == "__main__":
     main()
-#select nombre,edad from usuarios where nombre=juan and edad=27

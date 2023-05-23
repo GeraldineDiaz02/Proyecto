@@ -54,7 +54,7 @@
     <property name="frameShadow">
      <enum>QFrame::Raised</enum>
     </property>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -89,7 +89,7 @@ color: rgb(107, 105, 105);</string>
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -141,7 +141,7 @@ color: rgb(107, 105, 105);</string>
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -172,7 +172,7 @@ color: rgb(107, 105, 105);</string>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_3">
+       <widget class="QLineEdit" name="usuario">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
@@ -201,7 +201,7 @@ color: rgb(107, 105, 105);</string>
        </widget>
       </item>
       <item>
-       <widget class="QLineEdit" name="lineEdit_4">
+       <widget class="QLineEdit" name="contrasena">
         <property name="styleSheet">
          <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
@@ -211,7 +211,7 @@ border: 1px solid  rgb(143, 142, 142);</string>
       </item>
      </layout>
     </widget>
-    <widget class="QWidget" name="">
+    <widget class="QWidget" name="layoutWidget">
      <property name="geometry">
       <rect>
        <x>110</x>
@@ -239,7 +239,7 @@ color: rgb(107, 105, 105);</string>
        </widget>
       </item>
       <item>
-       <widget class="QPushButton" name="pushButton_2">
+       <widget class="QPushButton" name="entrar">
         <property name="font">
          <font>
           <family>Bahnschrift SemiLight</family>
