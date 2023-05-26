@@ -1,11 +1,10 @@
 import sqlite3
 
-def registrar(usuario, nombre, fechana, genero, intereses, descripcion, profesion, areadetrab):
+def registrar(nombre, fechana, genero, intereses, descripcion, profesion, areadetrab):
     db = sqlite3.connect("Bseusuarios.s3db")
     cursor = db.cursor()
-
-    consulta = "INSERT INTO Registros (id, Nombre, fechana, genero, intereses, descripcion, profesion, areadetrab) VALUES (?, ?, ?, ?, ?, ?, ?, ?)"
-    cursor.execute(consulta, (usuario, nombre, fechana, genero, intereses, descripcion, profesion, areadetrab))
+    consulta = "INSERT INTO Registros (Nombre, fechana, genero, intereses, descripcion, profesion, areadetrab) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    cursor.execute(consulta, (nombre, fechana, genero, intereses, descripcion, profesion, areadetrab))
     db.commit()
     cursor.close()
     db.close()
@@ -14,9 +13,8 @@ def registrar(usuario, nombre, fechana, genero, intereses, descripcion, profesio
 def crearusu(email, contrasena, numcel):
     db = sqlite3.connect("Bseusuarios.s3db")
     cursor = db.cursor()
-
-    consulta = "INSERT INTO Creacionusuario (usuario, email, contrasena, numcel) VALUES (?, ?, ?, ?)"
-    cursor.execute(consulta, (email, email, contrasena, numcel))
+    consulta = "INSERT INTO Creacionusuario (email, contrasena, numcel) VALUES (?, ?, ?)"
+    cursor.execute(consulta, (email, contrasena, numcel))
     db.commit()
     cursor.close()
     db.close()
@@ -26,7 +24,7 @@ def validar(usuario):
     db = sqlite3.connect("Bseusuarios.s3db")
     db.row_factory = sqlite3.Row
     cursor = db.cursor()
-    consulta = "SELECT contrasena FROM Creacionusuario WHERE usuario = ?"
+    consulta = "SELECT contrasena FROM Creacionusuario WHERE email = ?"
     cursor.execute(consulta, (usuario,))
     resultado = cursor.fetchone()
     cursor.close()
@@ -55,12 +53,10 @@ def main():
     descripcion = input('Ingrese una descripcion de su persona: ')
     profesion = input('Ingrese su Profesion: ')
     areatrab = input('Ingrese su area de trabajo: ')
-    email = input('Ingrese su email: ')
-    registrar(email, Nombre, fechana, genero, intereses, descripcion, profesion, areatrab)
-    contrasena = input('\nIngrese su contraseña: ')
-    crearusu(email, contrasena)
+    registrar(Nombre, fechana, genero, intereses, descripcion, profesion, areatrab)
     x = input('\nIngrese su usuario: ')
     validar(x)
+
 
 if __name__ == "__main__":
     main()

@@ -347,6 +347,27 @@ background-color: rgb(187, 134, 252);</string>
        </item>
       </layout>
      </widget>
+     <widget class="QLabel" name="label_2">
+      <property name="geometry">
+       <rect>
+        <x>-80</x>
+        <y>130</y>
+        <width>421</width>
+        <height>261</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap>../../../../../Downloads/IMG-20230523-WA0001-removebg-preview.png</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <zorder>label_2</zorder>
+     <zorder>layoutWidget</zorder>
     </widget>
    </widget>
   </widget>
