@@ -320,7 +320,7 @@ color: rgb(107, 105, 105);</string>
         </spacer>
        </item>
        <item>
-        <widget class="QPushButton" name="registrar">
+        <widget class="QPushButton" name="crear">
          <property name="font">
           <font>
            <family>Bahnschrift SemiLight</family>

@@ -1,10 +1,10 @@
 import sqlite3
 
-def registrar(nombre, fechana, genero, intereses, descripcion, profesion, areatrab):
+def registrar(nombre, fechana, genero, intereses, descripcion, profesion, areadetrab):
     db = sqlite3.connect("Bseusuarios.s3db")
     cursor = db.cursor()
-    consulta = "INSERT INTO Registros (Nombre, fechana, genero, intereses, descripcion, profesion, areatrab) VALUES (?, ?, ?, ?, ?, ?, ?)"
-    cursor.execute(consulta, (nombre, fechana, genero, intereses, descripcion, profesion, areatrab))
+    consulta = "INSERT INTO Registros (Nombre, fechana, genero, intereses, descripcion, profesion, areadetrab) VALUES (?, ?, ?, ?, ?, ?, ?)"
+    cursor.execute(consulta, (nombre, fechana, genero, intereses, descripcion, profesion, areadetrab))
     db.commit()
     cursor.close()
     db.close()
@@ -13,7 +13,7 @@ def registrar(nombre, fechana, genero, intereses, descripcion, profesion, areatr
 def crearusu(email, contrasena, numcel):
     db = sqlite3.connect("Bseusuarios.s3db")
     cursor = db.cursor()
-    consulta = "INSERT INTO Creacionusuario (email, contrasena, numcel) "
+    consulta = "INSERT INTO Creacionusuario (email, contrasena, numcel) VALUES (?, ?, ?)"
     cursor.execute(consulta, (email, contrasena, numcel))
     db.commit()
     cursor.close()
@@ -33,6 +33,17 @@ def validar(usuario):
         return True, resultado["contrasena"]
     else:
         return False, None
+
+def verificar_datos_existente(email, numcel):
+    db = sqlite3.connect("Bseusuarios.s3db")
+    db.row_factory = sqlite3.Row
+    cursor = db.cursor()
+    consulta = "SELECT * FROM Creacionusuario WHERE email = ? OR numcel = ?"
+    cursor.execute(consulta, (email, numcel))
+    resultado = cursor.fetchone()
+    cursor.close()
+    db.close()
+    return resultado is not None
 
 def main():
     Nombre = input('Ingrese su Nombre: ')

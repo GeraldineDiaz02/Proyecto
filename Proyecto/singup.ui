@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>912</width>
+    <width>913</width>
     <height>600</height>
    </rect>
   </property>
@@ -90,7 +90,7 @@ color: rgb(127, 57, 251);</string>
         </spacer>
        </item>
        <item>
-        <widget class="QLineEdit" name="crearusuario">
+        <widget class="QLineEdit" name="inemail">
          <property name="font">
           <font>
            <family>Bahnschrift Light SemiCondensed</family>
@@ -124,7 +124,7 @@ color: rgb(107, 105, 105);</string>
         </spacer>
        </item>
        <item>
-        <widget class="QLineEdit" name="crearcontrasena">
+        <widget class="QLineEdit" name="incontrasena">
          <property name="font">
           <font>
            <family>Bahnschrift Light SemiCondensed</family>
@@ -193,7 +193,7 @@ color: rgb(107, 105, 105);</string>
         </spacer>
        </item>
        <item>
-        <widget class="QLineEdit" name="numcel">
+        <widget class="QLineEdit" name="innumcel">
          <property name="font">
           <font>
            <family>Bahnschrift Light SemiCondensed</family>
@@ -262,7 +262,7 @@ background-color: rgb(187, 134, 252);</string>
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>912</width>
+     <width>913</width>
      <height>21</height>
     </rect>
    </property>
