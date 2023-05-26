@@ -45,14 +45,16 @@ class SingUpWindow(QMainWindow):
             resultado = cb.crearusu(email, contrasena, numcel)
             QMessageBox.information(self, "Registro", "Registro exitoso.")
             self.hide()  # Ocultar la ventana de singup.ui
-            create_user_window = CreateUserWindow()
+            create_user_window = CreateUserWindow(email)
             create_user_window.show()
 
 class CreateUserWindow(QMainWindow):
-    def __init__(self):
+    def __init__(self, email):
         super().__init__()
         self.ui = loadUi("createuser.ui", self)
         self.show()
+
+        self.email = email
 
         self.ui.crear.clicked.connect(self.registro)
 
@@ -70,7 +72,7 @@ class CreateUserWindow(QMainWindow):
         profesion = self.ui.inprofesiones.text()
         areadetrab = self.ui.inworkarea.text()
 
-        result = cb.registrar(nombre, fechana, genero, intereses, descripcion, profesion, areadetrab)
+        result = cb.registrar(self.email, nombre, fechana, genero, intereses, descripcion, profesion, areadetrab)
         if result == "1":
             QMessageBox.information(self, "Registro", "Usuario creado exitosamente")
             self.hide()  # Ocultar la ventana de createuser.ui
@@ -83,4 +85,3 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = Principal()
     sys.exit(app.exec_())
-
