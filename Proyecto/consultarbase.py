@@ -1,4 +1,5 @@
 import sqlite3
+import re
 
 def registrar(nombre, fechana, genero, intereses, descripcion, profesion, areadetrab):
     db = sqlite3.connect("Bseusuarios.s3db")
@@ -11,6 +12,16 @@ def registrar(nombre, fechana, genero, intereses, descripcion, profesion, areade
     return "1"
 
 def crearusu(email, contrasena, numcel):
+    # Validar la contraseña
+    if (
+        len(contrasena) < 8 or len(contrasena) > 16 or
+        not re.search(r"[A-Z]", contrasena) or
+        not re.search(r"[a-z]", contrasena) or
+        not re.search(r"\d", contrasena) or
+        not re.search(r"[!@#$%^&*()\-_=+[{\]};:'\",<.>/?]", contrasena)
+    ):
+        return "La contraseña no cumple con los requisitos."
+
     db = sqlite3.connect("Bseusuarios.s3db")
     cursor = db.cursor()
     consulta = "INSERT INTO Creacionusuario (email, contrasena, numcel) VALUES (?, ?, ?)"
@@ -34,7 +45,7 @@ def validar(usuario):
     else:
         return False, None
 
-def verificar_datos_existente(email, numcel):
+def verificardatos(email, numcel):
     db = sqlite3.connect("Bseusuarios.s3db")
     db.row_factory = sqlite3.Row
     cursor = db.cursor()

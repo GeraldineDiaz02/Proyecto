@@ -1,4 +1,7 @@
+# -*- coding: utf-8 -*-
+
 from PyQt5.QtWidgets import QApplication, QMainWindow, QMessageBox
+from PyQt5 import QtWidgets
 from PyQt5.uic import loadUi
 import consultarbase as cb
 import sys
@@ -10,7 +13,19 @@ class Principal(QMainWindow):
         self.show()
 
         self.ui.entrar.clicked.connect(self.entrando)
-        self.ui.llevarsingup.clicked.connect(self.open_singup_ui)
+        self.ui.llevarsingup.clicked.connect(self.opensingup)
+
+        self.show_password = False  # Variable para almacenar el estado de visualización de la contraseña
+
+        self.ui.vercontra.clicked.connect(self.verlacontrasena)  # Conecta la señal del botón con la función
+
+    def verlacontrasena(self):
+        self.show_password = not self.show_password  # Cambia el estado de visualización de la contraseña
+
+        if self.show_password:
+            self.ui.contrasena_log.setEchoMode(QtWidgets.QLineEdit.Normal)  # Muestra el texto normalmente
+        else:
+            self.ui.contrasena_log.setEchoMode(QtWidgets.QLineEdit.Password)
 
     def entrando(self):
         usuario = self.ui.usuario_log.text()
@@ -21,7 +36,7 @@ class Principal(QMainWindow):
         else:
             QMessageBox.warning(self, "Inicio de sesión", "Nombre de usuario o contraseña incorrectos")
 
-    def open_singup_ui(self):
+    def opensingup(self):
         self.hide()  # Ocultar la ventana de loginInterfaz.ui
         singup_window = SingUpWindow()
         singup_window.show()
@@ -32,14 +47,14 @@ class SingUpWindow(QMainWindow):
         self.ui = loadUi("singup.ui", self)
         self.show()
 
-        self.ui.registrar.clicked.connect(self.registro_exitoso)
+        self.ui.registrar.clicked.connect(self.registroexitoso)
 
-    def registro_exitoso(self):
+    def registroexitoso(self):
         email = self.ui.inemail.text()
         contrasena = self.ui.incontrasena.text()
         numcel = self.ui.innumcel.text()
 
-        if cb.verificar_datos_existente(email, numcel):
+        if cb.verificardatos(email, numcel):
             QMessageBox.warning(self, "Registro", "El correo electrónico o número de celular ya está registrado.")
         else:
             resultado = cb.crearusu(email, contrasena, numcel)
@@ -83,3 +98,4 @@ if __name__ == "__main__":
     app = QApplication(sys.argv)
     window = Principal()
     sys.exit(app.exec_())
+

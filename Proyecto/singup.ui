@@ -124,25 +124,29 @@ color: rgb(107, 105, 105);</string>
         </spacer>
        </item>
        <item>
-        <widget class="QLineEdit" name="incontrasena">
-         <property name="font">
-          <font>
-           <family>Bahnschrift Light SemiCondensed</family>
-          </font>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">background-color: rgb(255, 255, 255);
+        <layout class="QHBoxLayout" name="horizontalLayout">
+         <item>
+          <widget class="QLineEdit" name="incontrasena">
+           <property name="font">
+            <font>
+             <family>Bahnschrift Light SemiCondensed</family>
+            </font>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 255, 255);
 border-radius: 5px;
 border: 1px solid  rgb(143, 142, 142);
 color: rgb(107, 105, 105);</string>
-         </property>
-         <property name="text">
-          <string>Password</string>
-         </property>
-         <property name="alignment">
-          <set>Qt::AlignCenter</set>
-         </property>
-        </widget>
+           </property>
+           <property name="text">
+            <string>Password</string>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+         </item>
+        </layout>
        </item>
        <item>
         <spacer name="verticalSpacer_3">
@@ -275,6 +279,8 @@ background-color: rgb(187, 134, 252);</string>
      </widget>
      <zorder>label_3</zorder>
      <zorder>layoutWidget</zorder>
+     <zorder>vercontra1</zorder>
+     <zorder>incontrasena</zorder>
     </widget>
    </widget>
   </widget>
