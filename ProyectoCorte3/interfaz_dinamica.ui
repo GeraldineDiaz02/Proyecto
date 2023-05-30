@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>1079</width>
-    <height>835</height>
+    <height>750</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -237,7 +237,7 @@ border: 2px solid  rgb(126, 126, 126);
 QPushButton{
 width: 201px;
 height: 58px;
-border-radius:20px;
+border-radius:15px;
 background-color: white;
 color: rgb(0, 0, 0);
 font: 10pt &quot;Bahnschrift SemiLight&quot;;
@@ -246,7 +246,7 @@ font: 10pt &quot;Bahnschrift SemiLight&quot;;
 QPushButton:hover{
 width: 200px;
 height: 57px;
-border-radius:20px;
+border-radius:15px;
 background-color: rgb(61, 61, 61);
 color: rgb(255, 255, 255);
 font: 9pt &quot;Bahnschrift SemiLight&quot;;
@@ -504,7 +504,7 @@ font: 80 26pt &quot;Bahnschrift&quot;;</string>
                      <property name="minimumSize">
                       <size>
                        <width>200</width>
-                       <height>0</height>
+                       <height>40</height>
                       </size>
                      </property>
                      <property name="styleSheet">
@@ -521,6 +521,9 @@ font: 10pt &quot;Bahnschrift SemiLight&quot;;
                      </property>
                      <property name="text">
                       <string/>
+                     </property>
+                     <property name="wordWrap">
+                      <bool>true</bool>
                      </property>
                     </widget>
                     <widget class="QLabel" name="label_6">
@@ -814,7 +817,7 @@ font: 12pt &quot;Bahnschrift SemiLight&quot;;
                <property name="minimumSize">
                 <size>
                  <width>120</width>
-                 <height>0</height>
+                 <height>220</height>
                 </size>
                </property>
                <property name="maximumSize">
@@ -915,7 +918,7 @@ font: 11pt &quot;Bahnschrift SemiLight&quot;;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton">
+                 <widget class="QPushButton" name="bt_settings">
                   <property name="minimumSize">
                    <size>
                     <width>0</width>
@@ -923,7 +926,7 @@ font: 11pt &quot;Bahnschrift SemiLight&quot;;
                    </size>
                   </property>
                   <property name="text">
-                   <string>Edit</string>
+                   <string>Settings</string>
                   </property>
                   <property name="icon">
                    <iconset>
@@ -932,7 +935,14 @@ font: 11pt &quot;Bahnschrift SemiLight&quot;;
                  </widget>
                 </item>
                 <item>
-                 <widget class="QPushButton" name="pushButton_3">
+                 <widget class="QPushButton" name="bt_help">
+                  <property name="text">
+                   <string>Help</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <widget class="QPushButton" name="cerrarsecion">
                   <property name="font">
                    <font>
                     <family>Bahnschrift SemiLight</family>

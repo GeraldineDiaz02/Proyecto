@@ -7,28 +7,39 @@ from PyQt5 import QtCore, QtWidgets
 from PyQt5.QtWidgets import QFileDialog
 from PyQt5.QtGui import QImage, QPixmap
 from PyQt5.uic import loadUi
+import help_create as hc
+from ayuda import Ayuda
 import sqlite3
 
 
-class Principal(QMainWindow):
+usuariologin = None
+
+
+class MostrarPerfil(QMainWindow):
     def __init__(self): 
-        super(Principal, self).__init__()
+        super(MostrarPerfil, self).__init__()
         loadUi('interfaz_dinamica.ui',self)
 
         self.conexion = sqlite3.connect('BSEUSUARIOS.s3db')
+
+        self.ultimo_perfil = ""
         
         self.show()
 
         # Barra de titulo
         self.click_posicion = QPoint()
         #self.bt_perfil.clicked.connect(self.abrir_pestaña_superior)
-        #self.bt_inicio.clicked.connect(self.volver_al_inicio)
+        
 
         ## Botones
         #self.bt_actualizar.clicked.connect(self.refrescar)
         #self.bt_agregar.clicked.connect(self.agregar_amigos)
         self.bt_actualizar.clicked.connect(self.mostrar_datos)
         self.bt_search.clicked.connect(self.buscar_perfiles)
+        self.bt_inicio.clicked.connect(self.mostrar_ultimo_perfil)
+        self.bt_settings.clicked.connect(self.configuracion)
+        self.bt_help.clicked.connect(self.show_help)
+    
 
         ## Coneccion botones para acceder a las paginas
         self.bt_mas.clicked.connect(lambda: self.stackedWidget.setCurrentWidget(self.page_agregar))
@@ -54,6 +65,15 @@ class Principal(QMainWindow):
 
         #Lista amigos
         self.perfiles_agregados = []
+        
+    
+    def show_help(self):
+        view = Ayuda()
+        
+    def configuracion(self):
+        view = hc.hola()
+        view.show()  
+      
 
     def mover_menu(self):
         if True:
@@ -84,23 +104,30 @@ class Principal(QMainWindow):
             self.animacion.setEndValue(alargar)
             self.animacion.setEasingCurve(QtCore.QEasingCurve.InOutQuart)
             self.animacion.start()
+            
+    def get_ultimo_perfil(self):
+        return self.ultimo_perfil
 
+    def mostrar_ultimo_perfil(self):
+        self.mostrar_datos(self.ultimo_perfil)
+        self.ultimo_perfil = ""
 
     def mostrar_datos(self, nombre):
         self.stackedWidget.setCurrentWidget(self.page_perfil)
         n=nombre
         cursor = self.conexion.cursor()
-        cursor.execute("SELECT * FROM Perfiles WHERE nombre = '{}'".format(n))
+        cursor.execute("SELECT * FROM Registros WHERE Nombre = '{}'".format(n))
         perfil = cursor.fetchall()
         cursor.close()
+
         if perfil:
-            self.nombre.setText(f'{perfil[0][0]}')
-            self.profesion.setText(f'{perfil[0][5]}')
-            self.resena.setText(f'{perfil[0][4]}')
-            self.birthdate.setText(f'{perfil[0][1]}')
-            self.gender.setText(f'{perfil[0][2]}')
-            self.interests.setText(f'{perfil[0][3]}')
-            self.workarea.setText(f'{perfil[0][6]}')
+            self.nombre.setText(f'{perfil[0][1]}')
+            self.profesion.setText(f'{perfil[0][6]}')
+            self.resena.setText(f'{perfil[0][5]}')
+            self.birthdate.setText(f'{perfil[0][2]}')
+            self.gender.setText(f'{perfil[0][3]}')
+            self.interests.setText(f'{perfil[0][4]}')
+            self.workarea.setText(f'{perfil[0][7]}')
 
             # Limpiar el layout actual de frame_agregar
             self.clear_agregar_layout()
@@ -124,7 +151,7 @@ class Principal(QMainWindow):
     def buscar_perfiles(self):
         termino_busqueda = self.line_busqueda.text()
         cursor = self.conexion.cursor()
-        cursor.execute("SELECT nombre, profesion FROM Perfiles WHERE profesion = '{}'".format(termino_busqueda))
+        cursor.execute("SELECT Nombre, profesion FROM Registros WHERE profesion = '{}'".format(termino_busqueda))
         perfiles = cursor.fetchall()
         cursor.close()
     
@@ -175,7 +202,7 @@ class Principal(QMainWindow):
         n = nombre
 
         cursor = self.conexion.cursor()
-        cursor.execute("SELECT nombre, profesion FROM Perfiles WHERE nombre = '{}'".format(n))
+        cursor.execute("SELECT Nombre, profesion FROM Registros WHERE nombre = '{}'".format(n))
         amigo = cursor.fetchall()
         cursor.close()
 
@@ -206,7 +233,7 @@ class Principal(QMainWindow):
 
 def main():
     app = QApplication(sys.argv)
-    my_app = Principal()
+    my_app = MostrarPerfil()
     my_app.show()
     sys.exit(app.exec_())
     
